@@ -1,4 +1,4 @@
-const print = text => console.log(text);
+const print = text => console.log(text.toString());
 /*
 var fooArr = [];
 var barArr = [];
@@ -414,17 +414,19 @@ let books = [
 
 function compare(a,b)
 {
-    if (a.author < b.author)
+    if (a.title < b.title)
         return -1;
-    if (a.author > b.author)
+    if (a.title > b.title)
         return 1;
     return 0;
 }
 
 print(books.sort(compare));
+print('\n');
+print(books.sort((a, b) => a.id - b.id));
 
 for (let i = 0; i < books.length; i++) {
-    print(books[i].author);
+    print(books[i].title);
 }*/
 /* пары чисел, сумма которых равна заданному значению
 let num = 5;
@@ -779,4 +781,163 @@ console.log(candidate.getFullName());
 candidate.addLanguage('C#');
 console.log(candidate.getInfo());*/
 
+/*let arr = [7, 9, 0, -2];
+
+const last = (arr, i) => {
+    let len = arr.length;
+    if (i === undefined) return arr[len - 1];
+    return arr.slice(Math.max(len - i, 0));
+};
+
+print(last(arr,2));*/
+/*let number = '025468';
+
+const dash = (nums) => {
+    let result = [nums[0]];
+    for (let i = 1; i < nums.length; i++) {
+        if (nums[i - 1] % 2 === 0 && nums[i] % 2 === 0) {
+            result.push('-', nums[i]);
+        } else {
+            result.push(nums[i]);
+        }
+    }
+    return result.join('');
+
+};
+
+print(dash(number));*/
+/*let cats = ['Tom','Fluffy','Tom','Bella','Chloe','Tom','Chloe'];
+let counts = {};
+let compare = 0;
+let mostFrequent;
+
+for (let i = 0; i < cats.length; i++) {
+    let name = cats[i];
+
+    if (counts[name] === undefined) {
+        counts[name] = 1;
+    } else {
+        counts[name] = counts[name] + 1;
+    }
+
+    if (counts[name] > compare) {
+        compare = counts[name];
+        mostFrequent = cats[i];
+    }
+}
+
+print(mostFrequent + ": " + compare);*/
+/*let arr = [0, 1, 2, 3, 4];
+let res = [];
+const sum_sq = (arr) => {
+    return arr.reduce((a, b) => {
+        res.push(b ** 2);
+        return a + b ** 2;
+    }, 0);
+};
+
+print(sum_sq(arr));
+print(res);*/
+/*let color = ["Blue ", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow "];
+let o = ["th", "st", "nd", "rd"];
+
+for (let i = 0; i < color.length; i++) {
+    switch (i) {
+        case 0:
+            print(`${i + 1 + o[1]} choice is ${color[i]}`);
+            break;
+        case 1:
+            print(`${i + 1 + o[2]} choice is ${color[i]}`);
+            break;
+        case 2:
+            print(`${i + 1 + o[3]} choice is ${color[i]}`);
+            break;
+        default:
+            print(`${i + 1 + o[0]} choice is ${color[i]}`);
+            break;
+    }
+}*/
+/* to shuffle an array
+
+let myArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+const shuffle = (arra1) => {
+    let ctr = arra1.length;
+    let temp;
+    let index;
+
+    while (ctr > 0) {
+        index = Math.floor(Math.random() * ctr);
+        ctr--;
+        temp = arra1[ctr];
+        arra1[ctr] = arra1[index];
+        arra1[index] = temp;
+    }
+    return arra1;
+}*/
+/*
+const array_range = (from, to) => {
+    let result = [];
+    for (let i = from; i <= to; i++) {
+        result.push(i);
+    }
+    return result;
+};
+
+print(array_range(-4, 7));*/
+/*let numberArray = [1, 2, 3, 4, 10, 5, 6, 7];
+
+let result = numberArray.map(value => () => console.log(value));
+
+result[4]();*/
+
+
+/*const placeAnOrder = (orderNumber) => {
+    console.log("Customer order:", orderNumber);
+
+    cookAndDeliverFood(() => {
+        console.log("Delivered food order:", orderNumber);
+    })
+};
+
+const cookAndDeliverFood = (callback) => {
+    setTimeout(callback, 5000);
+};
+
+placeAnOrder(1);
+placeAnOrder(2);
+placeAnOrder(3);
+placeAnOrder(4);
+placeAnOrder(5);
+placeAnOrder(6);*/
+
+/*function User() {
+    this.name = "";
+    this.life = 100;
+    this.giveLife = (targetPlayer) => {
+        targetPlayer.life += 1;
+        this.life -= 1;
+        console.log(this.name + " give 1 life for " + targetPlayer.name);
+        console.log(targetPlayer.name + ": " + targetPlayer.life);
+        console.log(this.name + ": " + this.life);
+    }
+}
+
+const Pasha = new User();
+const Andrey = new User();
+
+Pasha.name = "Pasha";
+Andrey.name = "Andrey";
+
+Pasha.giveLife(Andrey);
+Pasha.giveLife(Andrey);
+
+
+User.prototype.uppercut = function uppercut(targetPlayer) {
+    targetPlayer.life -= 3;
+    console.log(this.name + " just uppercutted " + targetPlayer.name);
+    console.log(targetPlayer.name + ": " + targetPlayer.life);
+};
+
+Pasha.uppercut(Andrey);*/
 
