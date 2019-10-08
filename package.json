@@ -2,6 +2,8 @@
   "name": "ForTests",
   "version": "1.0.0",
   "dependencies": {
-    "connect": "^3.6.6"
+    "bluebird": "^3.5.4",
+    "connect": "^3.6.6",
+    "node-fetch": "^2.3.0"
   }
 }

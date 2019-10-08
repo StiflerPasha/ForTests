@@ -1,3 +1,4 @@
+// @flow
 const print = text => console.log(text.toString());
 /*
 var fooArr = [];
@@ -172,13 +173,13 @@ function getSums(num) {
     let arrNums = Array.from(Array(num), (v, index) => ++index)
 
     let result = [];
-  
+
     let totalSum = arrNums.reduce(function(sum, item) {
       result.push(sum);
       return sum + item;
     });
     result.push(totalSum);
-  
+
     return result;
   }
 
@@ -941,3 +942,46 @@ User.prototype.uppercut = function uppercut(targetPlayer) {
 
 Pasha.uppercut(Andrey);*/
 
+
+let text = 'SMS messages are really short';
+let text2 = '1234567 123 1234 123456789 12 12345678';
+let text3 = 'One proper SMS can contain at most K characters.' +
+   ' If the text is longer, it needs to be split into parts.' +
+   ' Each part should be sent in a separate message that fulfills' +
+   ' the maximum length requirement. Text may not be split within words.' +
+   ' The order of the words and the messages can\'t change, so that we can' +
+   ' later concatenate the resulting messages to retrieve the original text.' +
+   ' Spaces at the start and end of all messages are removed, and thus are' +
+   ' not accounted for in the overall message length.';
+let length = 22;
+
+const solution = (S, K) => {
+   let textArr = S.split(' ');
+   let tempResult = [];
+
+   if (textArr.some(text => text.length > K)) return -1;
+
+   let validateMsg = textArr.reduce((acc, curr) => {
+	  if ((acc.join('').length + curr.length + acc.length <= K)) {
+		 return [...acc, curr];
+	  } else {
+		 tempResult.push([...acc]);
+		 return [curr];
+	  }
+   }, textArr.splice(0, 1));
+
+   let result = [...tempResult, validateMsg];
+
+   return result.length;
+   /*{
+	  result: () => console.log(result),
+	  msgNeeds: () => console.log(result.length),
+	  printMsg: () => result.forEach((msg, i) => {
+		 console.log(`Msg ${ ++i }: ${ msg.join(' ') } (${ msg.join(' ').length })`);
+	  }),
+   };*/
+};
+
+
+console.log(solution(text3, length));
+//solution(text3, length).printMsg();
