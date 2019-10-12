@@ -1,5 +1,3 @@
-// @flow
-const print = text => console.log(text.toString());
 /*
 var fooArr = [];
 var barArr = [];
@@ -892,7 +890,6 @@ let result = numberArray.map(value => () => console.log(value));
 
 result[4]();*/
 
-
 /*const placeAnOrder = (orderNumber) => {
     console.log("Customer order:", orderNumber);
 
@@ -942,8 +939,46 @@ User.prototype.uppercut = function uppercut(targetPlayer) {
 
 Pasha.uppercut(Andrey);*/
 
+/*let text = 'SMS messages are really short';
+let text2 = '1234567 123 1234 123456789 12';
+let text4 = 'Abc cde';
+let length = 50;
 
-let text = 'SMS messages are really short';
+
+function split(arr, delimiter) {
+   let tmp = [];
+   if(!arr)
+	  return tmp;
+   let res = [tmp];
+   for(let i = 0; i < arr.length; i++) {
+	  if(arr[i] !== delimiter)
+		 tmp.push(arr[i]);
+	  else {
+		 tmp = [];
+		 res.push(tmp);
+	  }
+   }
+   return res.map(el => el.join(''));
+}
+
+const solution = (S, K) => {
+   let textArr = split(S.trim(),' ');
+   let tempResult = [];
+
+   if (!S) return [];
+
+   let validateMsg = textArr.reduce((acc, curr) => {
+	  if ((acc.join('').length + curr.length + acc.length <= K)) {
+		 return [...acc, curr];
+	  } else {
+		 tempResult.push([...acc]);
+		 return [curr];
+	  }
+   }, textArr.splice(0, 1));
+
+   return [...tempResult, validateMsg].map(el => el.join(' '));
+};*/
+/*let text = 'SMS messages are really short';
 let text2 = '1234567 123 1234 123456789 12 12345678';
 let text3 = 'One proper SMS can contain at most K characters.' +
    ' If the text is longer, it needs to be split into parts.' +
@@ -973,15 +1008,192 @@ const solution = (S, K) => {
    let result = [...tempResult, validateMsg];
 
    return result.length;
-   /*{
-	  result: () => console.log(result),
-	  msgNeeds: () => console.log(result.length),
-	  printMsg: () => result.forEach((msg, i) => {
-		 console.log(`Msg ${ ++i }: ${ msg.join(' ') } (${ msg.join(' ').length })`);
-	  }),
-   };*/
+};
+*/
+
+/*
+let test = '1plus2plus3minus4'.replace(/plus/g, '+').replace(/minus/g, '-');
+
+function calculate(str) {
+   let ans = str.replace(/plus/g, '+').replace(/minus/g, '-');
+   return new Function(`return ${ ans }`)() + '';
+}*/
+
+/*
+const firstDup = str => {
+   let fullArr = str.split('');
+
+   while (fullArr.length) {
+	  let el = fullArr.splice(0, 1);
+	  if (fullArr.some(elem => el.join('') === elem)) return el[0];
+   }
+};*/
+
+/*function firstNonRepeated(s) {
+   for (let i = 0; i < s.length; ++i) {
+	  if (s.lastIndexOf(s[i]) === i && s.indexOf(s[i]) === i) {
+		 return s[i];
+	  }
+   }
+   return null;
+}*/
+
+/*const multiplyAll = numbers => (factor) => numbers.map(num => num * factor);*/
+
+/* Vasya clerk
+let group1 = [25, 25, 25, 25, 100, 50];
+let group2 = [25, 100, 25, 25];
+let group3 = [25, 25, 50, 50, 25, 100];
+let group4 = [25, 50, 100, 25, 25, 25, 50];
+
+
+const tickets = peopleInLine => {
+   let money = [];
+   let isChange = true;
+
+   const isHaveChange = (cash, buyer) => {
+	  const compareNumbers = (a, b) => a - b;
+	  switch (buyer) {
+		 case 25:
+			money.push(25);
+			money.sort(compareNumbers);
+			break;
+		 case 50:
+			if (cash.some(el => el === 25)) {
+			   money.splice(cash.lastIndexOf(25), 1, 50);
+			   money.sort(compareNumbers);
+			} else {
+			   isChange = false;
+			}
+			break;
+		 case 100:
+			let pair = cash.filter(el => el === 25 || 50);
+			if (pair.includes(50) && pair.includes(25)) {
+			   money.splice(cash.lastIndexOf(25), 1);
+			   money.splice(cash.lastIndexOf(50), 1, 100);
+			   money.sort(compareNumbers);
+			} else if (cash.filter(el => el === 25).length >= 3) {
+			   money.splice(0, 3, 100);
+			   money.sort(compareNumbers);
+			} else {
+			   isChange = false;
+			}
+			break;
+		 default:
+			return false;
+	  }
+   };
+
+   for (let i = 0; i < peopleInLine.length; i++) {
+	  if (isChange) isHaveChange(money, peopleInLine[i]);
+   }
+   return isChange ? 'YES' : 'NO';
+};*/
+/* Vasya Clerk
+const tickets = (peopleInLine) => {
+   let bill25 = 0,
+	  bill50 = 0,
+	  bill100 = 0;
+
+   return peopleInLine.every(person => {
+	  switch (person) {
+		 case 25:
+			bill25 += 1;
+			return true;
+		 case 50:
+			bill50 += 1;
+			bill25 -= 1;
+			return bill25 >= 0;
+		 case 100:
+			bill100 += 1;
+			if (bill50 >= 1) {
+			   bill50 -= 1;
+			   bill25 -= 1;
+			} else bill25 -= 3;
+			return bill50 >= 0 && bill25 >= 0;
+	  }
+   }) ? 'YES' : 'NO';
+};*/
+
+/*josephusSurvivor
+function josephusSurvivor(n, k) {
+   let survivors = Array.from({ length: n }, (el, i) => ++i);
+
+   if (k === 1) return survivors[n - 1];
+
+   for (let i = 0, j = 1; survivors.length > 1; i++, i %= survivors.length) {
+	  if (j < k) {
+		 j++;
+	  } else {
+		 survivors.splice(i, 1);
+		 j = 2;
+	  }
+   }
+
+   return survivors[0];
+}*/
+/*josephusSurvivor
+function josephusSurvivor(n,k){
+   let arr = [...Array(n).keys()].map(i => i + 1);
+   let pos = 0;
+
+   while (arr.length > 1) {
+	  pos = (pos + (k - 1)) % arr.length;
+	  arr.splice(pos, 1);
+   }
+   return arr[0];
+}*/
+
+/*
+firstNSmallest
+const firstNSmallest = (array, n) => {
+   if (!n) return [];
+
+   while (array.length > n) {
+	  array.splice(array.lastIndexOf(Math.max(...array)), 1);
+   }
+
+   return array;
+};*/
+
+/*function solution(input, markers) {
+   let mark1 = input.indexOf(markers[0]);
+   let mark2 = input.indexOf(markers[1]);
+
+   let clean =  input.indexOf('\n') || input.indexOf('\\n');
+
+   let firstPart = input.slice(0, mark1).trim();
+   let secondPart = input.slice(clean, mark2).trim();
+
+   return firstPart + '\n' + secondPart;
+}*/
+
+/*function addLetters(...letters) {
+   if (!letters.length) return 'z';
+
+   let charIndex = letters
+	  .map(el => el.charCodeAt() - 96)
+	  .reduce((a, b) => a + b) + 96;
+
+   const check = () => {
+	  if (charIndex > 122) {
+		 charIndex -= (122 - 96);
+		 check();
+	  }
+   };
+
+   check();
+
+   return String.fromCharCode(charIndex);
+}*/
+
+const letterFrequency = (text) => {
+   let uniq = Array.from(new Set([...text.toLowerCase().replace(/\W/g, '')]));
+   return uniq
+	  .map(el => [el, text.match(new RegExp(el, 'gi')).length])
+	  .sort()
+	  .sort((a, b) => b[1] - a[1]);
 };
 
+console.log(letterFrequency('As long as I\'m learning something, I figure I\'m OK - it\'s a decent day.'));
 
-console.log(solution(text3, length));
-//solution(text3, length).printMsg();
