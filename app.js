@@ -1253,48 +1253,18 @@ rl.on("line", line => {
   lines.push(line);
   lines[0] <= lines.length - 1 && rl.close();
 }).on("close", () => {
-  const [len, ...bins] = lines;
-
-  let result = 0;
-  let temp = 0;
-
-  for (let i = 0; i <= len; i++) {
-    const el = +bins[i];
-    const next = +bins[i + 1];
-
-    if (el === 1 && el === next) {
-      ++temp;
-    } else if (el === 1) {
-      ++temp;
-    } else if (temp >= result) {
-      result = temp;
-      temp = 0;
-    }
-  }
-  process.stdout.write('Result: ' + result.toString());
-}); */
-
-/* const readline = require("readline");
-
-const rl = readline.createInterface({
-  input: process.stdin
-});
-
-let lines = [];
-
-rl.on("line", line => {
-  lines.push(line);
-  lines[0] <= lines.length - 1 && rl.close();
-}).on("close", () => {
   const [len, ...nums] = lines;
 
-  let a = [];
-  for (let i = 0, l = nums.length; i < l; i++) {
-    if (a.indexOf(nums[i]) === -1 && nums[i] !== "") a.push(nums[i]);
+  //let a = [];
+  for (let i = 0; i < nums.length; i++) {
+    let el = nums[i];
+    if (nums.lastIndexOf(el) === i) {
+      process.stdout.write(`${el}\n`);
+    }
   }
 
   //const result = nums.filter((v, i, a) => a.indexOf(v) === i);
-  a.forEach(el => process.stdout.write(`${el}\n`));
+  //a.forEach(el => process.stdout.write(`${el}\n`));
 }); */
 
 /* const readline = require("readline");
@@ -1389,6 +1359,17 @@ const cardGame = arr => {
 
 cardGame(cards); */
 
+//TIMES TABLE
+function table(n) {
+  for (let i = 1; i <= n; i++) {
+    let row = "";
+    for (let j = 1; j <= n; j++) {
+      row += `${i * j}\t`;
+    }
+    console.log(row);
+  }
+}
+
 /******************************************
  *                                        *
  *              АЛГОРИТМЫ               *
@@ -1409,10 +1390,8 @@ function qsort(arr) {
       const isPivot = i === pivotPosition;
       if (arr[i] <= pivot && !isPivot) {
         less.push(arr[i]);
-        console.log(`Iter ${i}`, arr[i]);
       } else if (arr[i] > pivot) {
         greater.push(arr[i]);
-        console.log(`Iter ${i}`, arr[i]);
       }
     }
     return [...qsort(less), pivot, ...qsort(greater)];
@@ -1464,6 +1443,7 @@ function fibonacciRec(num) {
   return fibonacciRec(num - 1) + fibonacciRec(num - 2);
 }
 
+//POWER
 function binpow(a, n) {
   if (n == 0) return 1;
   if (n % 2 == 1) return binpow(a, n - 1) * a;
@@ -1473,4 +1453,96 @@ function binpow(a, n) {
   }
 }
 
-console.log(binpow(2,5))
+//FACTORIAL RECURSION
+function factorial(n) {
+  return n != 1 ? n * factorial(n - 1) : 1;
+}
+
+//SEARCH in GRAPH
+const graph = {
+  you: {
+    friends: ["alice", "bob", "claire"],
+    sale: []
+  },
+  bob: {
+    friends: ["anuj", "peggy"],
+    sale: []
+  },
+  alice: {
+    friends: ["peggy"],
+    sale: []
+  },
+  claire: {
+    friends: ["tom", "johny"],
+    sale: []
+  },
+  anuj: {
+    friends: [],
+    sale: []
+  },
+  peggy: {
+    friends: [],
+    sale: ["car"]
+  },
+  tom: {
+    friends: ["peggy", "you"],
+    sale: ["pen", "moto", "mango"]
+  },
+  johny: {
+    friends: [],
+    sale: ["mango"]
+  }
+};
+
+function search(graph, name) {
+  let searchQueue = graph[name].friends;
+  let searched = [name];
+
+  function personIsSeller(name) {
+    return graph[name].sale.includes("mango");
+  }
+
+  while (searchQueue) {
+    let person = searchQueue.shift();
+    if (!searchQueue.includes(person)) {
+      if (personIsSeller(person)) {
+        console.log(`${person} is a mango seller`);
+        return true;
+      } else {
+        searchQueue.push(...graph[person].friends);
+        searched.push(person);
+      }
+    }
+  }
+  return false;
+}
+
+//FIND LONGER SEQUENCE(последовательность) 1 [1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 1, 1];
+function sequence(nums) {
+  let current = 0;
+  let best = 0;
+
+  for (let el of nums) {
+    if (el > 0) {
+      current++;
+      best = Math.max(current, best);
+    } else {
+      current = 0;
+    }
+  }
+}
+
+//GENERATE ~~(())(())
+function generate(cur, open, closed, n) {
+  if (cur.length === 2 * n) {
+    process.stdout.write(`${cur}\n`);
+    return;
+  }
+  if (open < n) {
+    generate(cur + "(", open + 1, closed, n);
+  }
+  if (closed < open) {
+    generate(cur + ")", open, closed + 1, n);
+  }
+}
+//generate("", 0, 0, num)
