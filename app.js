@@ -1187,13 +1187,59 @@ const firstNSmallest = (array, n) => {
    return String.fromCharCode(charIndex);
 }*/
 
-const letterFrequency = (text) => {
-   let uniq = Array.from(new Set([...text.toLowerCase().replace(/\W/g, '')]));
+/*const letterFrequency = (text) => {
+   let uniq = Array.from(new Set([...text.toLowerCase().replace(/[^a-zA-Z]+/g, '')]));
+
    return uniq
 	  .map(el => [el, text.match(new RegExp(el, 'gi')).length])
-	  .sort()
-	  .sort((a, b) => b[1] - a[1]);
+	  .sort((a, b) => {
+		 if (a[1] === b[1]) {
+			return a[0].charCodeAt(0) - b[0].charCodeAt(0);
+		 }
+		 return b[1] - a[1];
+	  });
+};*/
+
+/*const rowSumOddNumbers = count => {
+    return Array.from({length: 2 * count}, (_, i) => ++i)
+                .filter(el => el % 2 !== 0)
+                .reduce((acc, curr) => acc + curr)  * count;
 };
+*/
 
-console.log(letterFrequency('As long as I\'m learning something, I figure I\'m OK - it\'s a decent day.'));
+/*const allNonConsecutive = arr => {
+    return arr
+        .map((n, i) => {
+            if (!(n === (arr[i - 1] || n - 1) + 1)) return { i, n }
+        })
+        .filter(el => el)
+}*/
 
+/* const test = [21, 13, 2, 7, 5, 14, 7, 15, 9, 10]
+const test1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+console.log([...'bingo']
+    .map(el => el.charCodeAt(0) - 96)
+    .every(el => test.includes(el)) ? 'WIN' : 'LOSE') */
+
+function HQ9(code) {
+  switch (code) {
+    case "H":
+      return "Hello World!";
+    case "Q":
+      return code;
+    case "9":
+      let text = "";
+      for (let i = 99; i > 0; i--) {
+        if (i === 1) {
+          text += '1 bottle of beer on the wall, 1 bottle of beer.\nTake one down and pass it around, no more bottles of beer on the wall.\nNo more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall.';
+        } else {
+          text += i + ' bottles of beer on the wall, '+ i + ' bottles of beer.\nTake one down and pass it around, ' + (i - 1) + ' bottles of beer on the wall.\n';
+        }
+      }
+      return text;
+    default:
+      return;
+  }
+}
+
+console.log(HQ9("9"));
