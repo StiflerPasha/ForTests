@@ -1243,3 +1243,362 @@ function HQ9(code) {
 }
 
 console.log(HQ9("9"));
+/* const letterFrequency = text => {
+  let uniq = Array.from(new Set([...text.toLowerCase().replace(/\W/g, "")]));
+  return uniq
+    .map(el => [el, text.match(new RegExp(el, "gi")).length])
+    .sort()
+    .sort((a, b) => b[1] - a[1]);
+};
+ */
+
+/* let word = "attitude";
+
+function wordsToMarks(string) {
+  const toInt = a => a.charCodeAt(0) - 96;
+  return [...string].map(toInt).reduce((a, b) => a + b);
+} */
+
+/* const check = (word, num) => {
+  const toInt = w => ((w.charCodeAt(0) - 97) * num) % 26;
+  const toStr = n => String.fromCharCode(n + 97);
+  return num + [...word].map(el => toStr(toInt(el))).join("");
+};
+
+console.log(check("pasha", 13465657));
+
+function decode(r) {
+  const code = +r.match(/\d+/g)[0];
+  const wordArr = r.match(/\D/g);
+
+  const res = wordArr.map(el => {
+    for (let i = 0; i < 26; i++) {
+      if ((i * code) % 26 === el.charCodeAt(0) - 97) {
+        //console.log((i * code) % wordArr.length);
+
+        return String.fromCharCode(i + 97);
+      }
+    }
+  });
+  return code + res.join("") === r ? "Impossible to decode" : res.join("");
+}
+
+console.log(decode("1346566455naana")); */
+
+/* const jawerly = (jewels, stones) => {
+  let result = 0;
+  for (let i = 0; i < stones.length; i++) {
+    if (jewels.includes(stones.charAt(i))) {
+      ++result;
+    }
+  }
+  return result;
+};
+
+console.log(jawerly("ab", "aabbccd")); */
+
+/* const readline = require("readline");
+
+const rl = readline.createInterface({
+  input: process.stdin
+});
+
+let lines = [];
+
+rl.on("line", line => {
+  lines.push(line);
+  lines[0] <= lines.length - 1 && rl.close();
+}).on("close", () => {
+  const [len, ...nums] = lines;
+
+  //let a = [];
+  for (let i = 0; i < nums.length; i++) {
+    let el = nums[i];
+    if (nums.lastIndexOf(el) === i) {
+      process.stdout.write(`${el}\n`);
+    }
+  }
+
+  //const result = nums.filter((v, i, a) => a.indexOf(v) === i);
+  //a.forEach(el => process.stdout.write(`${el}\n`));
+}); */
+
+/* const readline = require("readline");
+
+const rl = readline.createInterface({
+  input: process.stdin
+});
+
+let lines = [];
+
+rl.on("line", line => {
+  lines.push(line);
+  lines.length === 2 && rl.close();
+}).on("close", () => {
+  process.stdout.write(
+    `${Number([...lines[0]].sort().join() === [...lines[1]].sort().join())}`
+  );
+}); */
+
+/* const readline = require("readline");
+
+const rl = readline.createInterface({
+  input: process.stdin
+});
+
+let lines = [];
+rl.on("line", line => {
+  lines.push(line.split(" "));
+  lines.length === 3 && rl.close();
+}).on("close", () => {
+  const [len, ...nums] = lines;
+  const sliced = nums.map(el => el.slice(1));
+  const arr = []
+    .concat(...sliced)
+    .map(Number)
+    .sort((a, b) => a - b)
+    .join(" ");
+  //console.log(arr.length);
+
+  const qsort = arr => {
+    if (arr.length < 2) {
+      return arr;
+    } else {
+      const pivotPosition = Math.floor(Math.random() * arr.length);
+      const pivot = arr[pivotPosition];
+
+      let less = [];
+      let greater = [];
+      for (let i = 0; i < arr.length; i++) {
+        const isPivot = i === pivotPosition;
+        if (arr[i] <= pivot && !isPivot) {
+          less.push(arr[i]);
+        } else if (arr[i] > pivot) {
+          greater.push(arr[i]);
+        }
+      }
+
+      return [...qsort(less), pivot, ...qsort(greater)];
+    }
+  };
+  process.stdout.write(`${qsort(arr).join(" ")}`);
+}); */
+
+/* function randomArray(length, max) {
+  return [...new Array(length)].map(() => Math.floor(Math.random() * max));
+} */
+
+/* const cards = [1, 2, 3]; //must arr.length % 3 === 0
+const cardGame = arr => {
+  let petya = 0;
+  let vasya = 0;
+
+  for (
+    let i = 0, petyaTurn = true;
+    i < arr.length;
+    i += 3, petyaTurn = !petyaTurn
+  ) {
+    const check = arr.slice(i, i + 3);
+
+    if (petyaTurn) {
+      petya += check[0];
+      vasya += check[1];
+      check[0] < check[1] ? (petya += check[2]) : (vasya += check[2]);
+    } else {
+      petya += check[1];
+      vasya += check[0];
+      check[1] < check[0] ? (petya += check[2]) : (vasya += check[2]);
+    }
+  }
+  console.log(`${petya > vasya ? "Petya" : "Vasya"}`);
+};
+
+cardGame(cards); */
+
+//TIMES TABLE
+function table(n) {
+  for (let i = 1; i <= n; i++) {
+    let row = "";
+    for (let j = 1; j <= n; j++) {
+      row += `${i * j}\t`;
+    }
+    console.log(row);
+  }
+}
+
+/******************************************
+ *                                        *
+ *              АЛГОРИТМЫ               *
+ *                                        *
+ ******************************************/
+//QUICK SORT
+function qsort(arr) {
+  if (arr.length < 2) {
+    return arr;
+  } else {
+    const pivotPosition = Math.floor(Math.random() * arr.length);
+    const pivot = arr[pivotPosition];
+
+    let less = [];
+    let greater = [];
+
+    for (let i = 0; i < arr.length; i++) {
+      const isPivot = i === pivotPosition;
+      if (arr[i] <= pivot && !isPivot) {
+        less.push(arr[i]);
+      } else if (arr[i] > pivot) {
+        greater.push(arr[i]);
+      }
+    }
+    return [...qsort(less), pivot, ...qsort(greater)];
+  }
+}
+
+//MERGE SORT
+function merge(arrays, sortFunc) {
+  let result = [];
+  let next;
+  // Add an 'index' property to each array to keep track of where we are in it.
+  arrays.forEach(array => (array.index = 0));
+
+  // Find the next array to pull from.
+  // Just sort the list of arrays by their current value and take the first one.
+  function findNext() {
+    return arrays
+      .filter(array => array.index < array.length)
+      .sort((a, b) => sortFunc(a[a.index], b[b.index]))[0];
+  }
+
+  // This is the heart of the algorithm.
+  while ((next = findNext())) result.push(next[next.index++]);
+
+  return result;
+}
+
+//GREATER COMMON DEVIDER(gcd)
+function gcd(a, b) {
+  return b ? gcd(b, a % b) : a;
+}
+
+//FIBONACCI LOOP
+function fibonacci(num) {
+  let a = 1;
+  let b = 1;
+
+  for (let i = 3; i <= num; i++) {
+    let c = a + b;
+    a = b;
+    b = c;
+  }
+  return b;
+}
+
+//FIBONACCI RECURSION
+function fibonacciRec(num) {
+  if (num < 3) return 1;
+  return fibonacciRec(num - 1) + fibonacciRec(num - 2);
+}
+
+//POWER
+function binpow(a, n) {
+  if (n == 0) return 1;
+  if (n % 2 == 1) return binpow(a, n - 1) * a;
+  else {
+    let b = binpow(a, n / 2);
+    return b * b;
+  }
+}
+
+//FACTORIAL RECURSION
+function factorial(n) {
+  return n != 1 ? n * factorial(n - 1) : 1;
+}
+
+//SEARCH in GRAPH
+const graph = {
+  you: {
+    friends: ["alice", "bob", "claire"],
+    sale: []
+  },
+  bob: {
+    friends: ["anuj", "peggy"],
+    sale: []
+  },
+  alice: {
+    friends: ["peggy"],
+    sale: []
+  },
+  claire: {
+    friends: ["tom", "johny"],
+    sale: []
+  },
+  anuj: {
+    friends: [],
+    sale: []
+  },
+  peggy: {
+    friends: [],
+    sale: ["car"]
+  },
+  tom: {
+    friends: ["peggy", "you"],
+    sale: ["pen", "moto", "mango"]
+  },
+  johny: {
+    friends: [],
+    sale: ["mango"]
+  }
+};
+
+function search(graph, name) {
+  let searchQueue = graph[name].friends;
+  let searched = [name];
+
+  function personIsSeller(name) {
+    return graph[name].sale.includes("mango");
+  }
+
+  while (searchQueue) {
+    let person = searchQueue.shift();
+    if (!searchQueue.includes(person)) {
+      if (personIsSeller(person)) {
+        console.log(`${person} is a mango seller`);
+        return true;
+      } else {
+        searchQueue.push(...graph[person].friends);
+        searched.push(person);
+      }
+    }
+  }
+  return false;
+}
+
+//FIND LONGER SEQUENCE(последовательность) 1 [1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 1, 1];
+function sequence(nums) {
+  let current = 0;
+  let best = 0;
+
+  for (let el of nums) {
+    if (el > 0) {
+      current++;
+      best = Math.max(current, best);
+    } else {
+      current = 0;
+    }
+  }
+}
+
+//GENERATE ~~(())(())
+function generate(cur, open, closed, n) {
+  if (cur.length === 2 * n) {
+    process.stdout.write(`${cur}\n`);
+    return;
+  }
+  if (open < n) {
+    generate(cur + "(", open + 1, closed, n);
+  }
+  if (closed < open) {
+    generate(cur + ")", open, closed + 1, n);
+  }
+}
+//generate("", 0, 0, num)
