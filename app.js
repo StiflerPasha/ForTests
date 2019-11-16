@@ -78,7 +78,7 @@ anagram("pasha", "ashap");
 anagram("finder", "Friend");
 anagram("hello", "bye");
 */
-const students = [{
+/*const students = [{
   name: 'Nick',
   grade: {
     math: 10,
@@ -102,7 +102,8 @@ const students = [{
 
 const simpleArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-const aboveTenSum = students.map(student => student.grade)
+const aboveTenSum = students
+ .map(student => student.grade)
  .filter(grade => grade >= 10)
  .reduce((prev, next) => prev + next, 0);
 print(aboveTenSum);
@@ -111,7 +112,7 @@ for (let i = 0; i < students.length; i++) {
   console.table(students[i]);
 }
 
-console.table(simpleArray);
+console.table(simpleArray);*/
 /*
 class Repo {
 	static getName() {
