@@ -24,13 +24,13 @@ console.log('Bar (by 5):\t' + barArr.length + '=>\t' + barArr);
 console.log('FooBar (2 & 5):\t' + fooBarArr.length + '=>\t' + fooBarArr);
 */
 var time = {
-		year: 2345,
-		month: 11,
-		day: 10,
-		hour: 11,
-		minute: 12,
-		second: 13,
-		microsecond: 123456,
+  year: 2345,
+  month: 11,
+  day: 10,
+  hour: 11,
+  minute: 12,
+  second: 13,
+  microsecond: 123456,
 };
 
 console.log(time); // (*)
@@ -1421,50 +1421,50 @@ cardGame(cards); */
 
 //TIMES TABLE
 function table(n) {
-		for (let i = 1; i <= n; i++) {
-				let row = '';
-				for (let j = 1; j <= n; j++) {
-						row += `${ i * j }\t`;
-				}
-				console.log(row);
-		}
+  for (let i = 1; i <= n; i++) {
+    let row = '';
+    for (let j = 1; j <= n; j++) {
+      row += `${ i * j }\t`;
+    }
+    console.log(row);
+  }
 }
 
 
 //Numericals of a String
 function replace(str) {
-		let result = '';
-		
-		[...str].reduce((prev, curr) => {
-				prev[curr] = (prev[curr] || 0) + 1;
-				result += prev[curr];
-				return prev;
-		}, {});
-		
-		return result;
+  let result = '';
+  
+  [...str].reduce((prev, curr) => {
+    prev[curr] = (prev[curr] || 0) + 1;
+    result += prev[curr];
+    return prev;
+  }, {});
+  
+  return result;
 }
 
 
 //Sums of Parts
 function partsSums(ls) {
-		ls.unshift(0);
-		let sum = ls.reduce((a, b) => a + b, 0);
-		return ls.map(el => sum -= el);
+  ls.unshift(0);
+  let sum = ls.reduce((a, b) => a + b, 0);
+  return ls.map(el => sum -= el);
 }
 
 
 //MinMinMax
 function minMinMax(array) {
-		let sorted = array.sort((a, b) => a - b);
-		
-		let min = array[0];
-		let max = array[array.length - 1];
-		
-		for (let i = min; i < max; i++) {
-				if (!array.includes(i)) {
-						return [min, i, max];
-				}
-		}
+  let sorted = array.sort((a, b) => a - b);
+  
+  let min = array[0];
+  let max = array[array.length - 1];
+  
+  for (let i = min; i < max; i++) {
+    if (!array.includes(i)) {
+      return [min, i, max];
+    }
+  }
 }
 
 /*let city = {
@@ -1503,63 +1503,63 @@ for (let [key, value] of Object.entries(divider)) {
 
 //Smallest possible sum
 function solution(numbers) {
-		
-		return numbers.reduce(gcd) * numbers.length;
-		
-		function gcd(a, b) {
-				return b ? gcd(b, a % b) : a;
-		}
-		
-		/*let sorted = numbers.sort((a, b) => a - b);
-		let max = sorted[numbers.length - 1];
-		let min = sorted[0];*/
-		
-		/*return (() => {
-			while (min) {
-				let t = min;
-				min = max % min;
-				max = t;
-			}
-			return max;
-		})() * numbers.length;*/
-		
-		/*if (max === min) {
-			return numbers[0] * numbers.length;
-		} else {
-			let changed = max - min;
-			
-			sorted.pop();
-			sorted.push(changed);
-			
-			return solution(sorted);
-		}*/
+  
+  return numbers.reduce(gcd) * numbers.length;
+  
+  function gcd(a, b) {
+    return b ? gcd(b, a % b) : a;
+  }
+  
+  /*let sorted = numbers.sort((a, b) => a - b);
+  let max = sorted[numbers.length - 1];
+  let min = sorted[0];*/
+  
+  /*return (() => {
+   while (min) {
+    let t = min;
+    min = max % min;
+    max = t;
+   }
+   return max;
+  })() * numbers.length;*/
+  
+  /*if (max === min) {
+   return numbers[0] * numbers.length;
+  } else {
+   let changed = max - min;
+   
+   sorted.pop();
+   sorted.push(changed);
+   
+   return solution(sorted);
+  }*/
 }
 
 
 //Longest Palindrome
 function longestPalindrome(str) {
-		if (str.length === 1) return 1;
-		let modStr = str.toLowerCase().replace(/[^A-Za-z0-9]+/gm, '');
-		let unique = [...new Set(modStr)];
-		return unique.length % 2 === 0 ? unique.length * 2 - 1 : unique.length * 2;
+  if (str.length === 1) return 1;
+  let modStr = str.toLowerCase().replace(/[^A-Za-z0-9]+/gm, '');
+  let unique = [...new Set(modStr)];
+  return unique.length % 2 === 0 ? unique.length * 2 - 1 : unique.length * 2;
 }
 
 
 //Consecutive Ducks
 function consecutiveDucks(num) {
-		return Math.log2(num) % 1 !== 0;
-		
-		/*if (num === 1) return false;
-		return num % 2 !== 0 ? true : consecutiveDucks(num / 2);*/
+  return Math.log2(num) % 1 !== 0;
+  
+  /*if (num === 1) return false;
+  return num % 2 !== 0 ? true : consecutiveDucks(num / 2);*/
 }
 
 
 //Geometric Progression Sequence
 function geometricSequenceElements(a, r, n) {
-		let arr = [a];
-		for (let i = 0; i < n - 1; i++) {
-				arr.push(arr[i] * r);
-		}
-		return arr.join`, `;
+  let arr = [a];
+  for (let i = 0; i < n - 1; i++) {
+    arr.push(arr[i] * r);
+  }
+  return arr.join`, `;
 }
 
