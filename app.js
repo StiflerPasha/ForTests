@@ -1,4 +1,4 @@
-var fooArr = [];
+/*var fooArr = [];
 var barArr = [];
 var fooBarArr = [];
 
@@ -20,8 +20,8 @@ console.log('>>>>>>>>foobar(47)<<<<<<<<<');
 console.log('\n');
 console.log(('Foo (by 2):\t' + fooArr.length + '=>\t' + fooArr).length);
 console.log('Bar (by 5):\t' + barArr.length + '=>\t' + barArr);
-console.log('FooBar (2 & 5):\t' + fooBarArr.length + '=>\t' + fooBarArr);
-var time = {
+console.log('FooBar (2 & 5):\t' + fooBarArr.length + '=>\t' + fooBarArr);*/
+/*var time = {
   year: 2345,
   month: 11,
   day: 10,
@@ -40,7 +40,7 @@ time.microsecond++;
 console.log(time);
 time.microsecond++;
 
-console.log(typeof (time[0]));
+console.log(typeof (time[0]));*/
 /*
 var style = ["Джаз", "Блюз"];
 
@@ -78,41 +78,40 @@ anagram("pasha", "ashap");
 anagram("finder", "Friend");
 anagram("hello", "bye");
 */
-/*const students = [{
-		name: "Nick",
-		grade: {
-			math: 10,
-			bio: 6,
-			physo: 8
-		}
-	},
-	{
-		name: "John",
-		grade: 15
-	},
-	{
-		name: "Julia",
-		grade: 19
-	},
-	{
-		name: "Nathalie",
-		grade: 9
-	},
+const students = [{
+  name: 'Nick',
+  grade: {
+    math: 10,
+    bio: 6,
+    physo: 8,
+  },
+},
+  {
+    name: 'John',
+    grade: 15,
+  },
+  {
+    name: 'Julia',
+    grade: 19,
+  },
+  {
+    name: 'Nathalie',
+    grade: 9,
+  },
 ];
 
 const simpleArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-const aboveTenSum = students
-	.map(student => student.grade) // сравниваем массив студентов с массивом их оценок
-	.filter(grade => grade >= 10) // отбираем оценки выше 10
-	.reduce((prev, next) => prev + next, 0); // суммируем каждую оценку выше 10
-    print(aboveTenSum)
+const aboveTenSum = students.map(student => student.grade)
+ .filter(grade => grade >= 10)
+ .reduce((prev, next) => prev + next, 0);
+print(aboveTenSum);
 
 for (let i = 0; i < students.length; i++) {
-	console.table(students[i])
+  console.table(students[i]);
 }
 
-console.table(simpleArray)*/
+console.table(simpleArray);
 /*
 class Repo {
 	static getName() {
