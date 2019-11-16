@@ -1,28 +1,26 @@
-/*
 var fooArr = [];
 var barArr = [];
 var fooBarArr = [];
 
 const foobar = (x) => {
-	for (let a = 1; a <= x; a++) {
-		if (a % 2 == 0 && a % 5 == 0) {
-			fooBarArr.push(a);
-		} else if (a % 2 == 0) {
-			fooArr.push(a);
-		} else if (a % 5 == 0) {
-			barArr.push(a);
-		}
-	}
+  for (let a = 1; a <= x; a++) {
+    if (a % 2 == 0 && a % 5 == 0) {
+      fooBarArr.push(a);
+    } else if (a % 2 == 0) {
+      fooArr.push(a);
+    } else if (a % 5 == 0) {
+      barArr.push(a);
+    }
+  }
 };
 
 foobar(5);
 console.log('\n');
-console.log('>>>>>>>>foobar(47)<<<<<<<<<')
+console.log('>>>>>>>>foobar(47)<<<<<<<<<');
 console.log('\n');
 console.log(('Foo (by 2):\t' + fooArr.length + '=>\t' + fooArr).length);
 console.log('Bar (by 5):\t' + barArr.length + '=>\t' + barArr);
 console.log('FooBar (2 & 5):\t' + fooBarArr.length + '=>\t' + fooBarArr);
-*/
 var time = {
   year: 2345,
   month: 11,
@@ -1527,10 +1525,10 @@ function solution(numbers) {
    return numbers[0] * numbers.length;
   } else {
    let changed = max - min;
-   
+
    sorted.pop();
    sorted.push(changed);
-   
+
    return solution(sorted);
   }*/
 }
