@@ -1444,7 +1444,7 @@ function replace(str) {
 	}, {});
 	
 	return result;
-};
+}
 
 
 //Sums of Parts
@@ -1565,4 +1565,3 @@ function geometricSequenceElements(a, r, n) {
 	return arr.join`, `;
 }
 
-console.log(geometricSequenceElements(2, 3, 5));
