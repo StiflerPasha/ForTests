@@ -1221,7 +1221,7 @@ console.log([...'bingo']
     .map(el => el.charCodeAt(0) - 96)
     .every(el => test.includes(el)) ? 'WIN' : 'LOSE') */
 
-function HQ9(code) {
+/* function HQ9(code) {
   switch (code) {
     case "H":
       return "Hello World!";
@@ -1231,18 +1231,24 @@ function HQ9(code) {
       let text = "";
       for (let i = 99; i > 0; i--) {
         if (i === 1) {
-          text += '1 bottle of beer on the wall, 1 bottle of beer.\nTake one down and pass it around, no more bottles of beer on the wall.\nNo more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall.';
+          text +=
+            "1 bottle of beer on the wall, 1 bottle of beer.\nTake one down and pass it around, no more bottles of beer on the wall.\nNo more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall.";
         } else {
-          text += i + ' bottles of beer on the wall, '+ i + ' bottles of beer.\nTake one down and pass it around, ' + (i - 1) + ' bottles of beer on the wall.\n';
+          text +=
+            i +
+            " bottles of beer on the wall, " +
+            i +
+            " bottles of beer.\nTake one down and pass it around, " +
+            (i - 1) +
+            " bottles of beer on the wall.\n";
         }
       }
       return text;
     default:
       return;
   }
-}
+} */
 
-console.log(HQ9("9"));
 /* const letterFrequency = text => {
   let uniq = Array.from(new Set([...text.toLowerCase().replace(/\W/g, "")]));
   return uniq
@@ -1418,9 +1424,9 @@ cardGame(cards); */
 //TIMES TABLE
 function table(n) {
   for (let i = 1; i <= n; i++) {
-    let row = "";
+    let row = '';
     for (let j = 1; j <= n; j++) {
-      row += `${i * j}\t`;
+      row += `${ i * j }\t`;
     }
     console.log(row);
   }
@@ -1438,10 +1444,10 @@ function qsort(arr) {
   } else {
     const pivotPosition = Math.floor(Math.random() * arr.length);
     const pivot = arr[pivotPosition];
-
+    
     let less = [];
     let greater = [];
-
+    
     for (let i = 0; i < arr.length; i++) {
       const isPivot = i === pivotPosition;
       if (arr[i] <= pivot && !isPivot) {
@@ -1460,18 +1466,18 @@ function merge(arrays, sortFunc) {
   let next;
   // Add an 'index' property to each array to keep track of where we are in it.
   arrays.forEach(array => (array.index = 0));
-
+  
   // Find the next array to pull from.
   // Just sort the list of arrays by their current value and take the first one.
   function findNext() {
     return arrays
-      .filter(array => array.index < array.length)
-      .sort((a, b) => sortFunc(a[a.index], b[b.index]))[0];
+     .filter(array => array.index < array.length)
+     .sort((a, b) => sortFunc(a[a.index], b[b.index]))[0];
   }
-
+  
   // This is the heart of the algorithm.
   while ((next = findNext())) result.push(next[next.index++]);
-
+  
   return result;
 }
 
@@ -1484,7 +1490,7 @@ function gcd(a, b) {
 function fibonacci(num) {
   let a = 1;
   let b = 1;
-
+  
   for (let i = 3; i <= num; i++) {
     let c = a + b;
     a = b;
@@ -1517,52 +1523,52 @@ function factorial(n) {
 //SEARCH in GRAPH
 const graph = {
   you: {
-    friends: ["alice", "bob", "claire"],
-    sale: []
+    friends: ['alice', 'bob', 'claire'],
+    sale: [],
   },
   bob: {
-    friends: ["anuj", "peggy"],
-    sale: []
+    friends: ['anuj', 'peggy'],
+    sale: [],
   },
   alice: {
-    friends: ["peggy"],
-    sale: []
+    friends: ['peggy'],
+    sale: [],
   },
   claire: {
-    friends: ["tom", "johny"],
-    sale: []
+    friends: ['tom', 'johny'],
+    sale: [],
   },
   anuj: {
     friends: [],
-    sale: []
+    sale: [],
   },
   peggy: {
     friends: [],
-    sale: ["car"]
+    sale: ['car'],
   },
   tom: {
-    friends: ["peggy", "you"],
-    sale: ["pen", "moto", "mango"]
+    friends: ['peggy', 'you'],
+    sale: ['pen', 'moto', 'mango'],
   },
   johny: {
     friends: [],
-    sale: ["mango"]
-  }
+    sale: ['mango'],
+  },
 };
 
 function search(graph, name) {
   let searchQueue = graph[name].friends;
   let searched = [name];
-
+  
   function personIsSeller(name) {
-    return graph[name].sale.includes("mango");
+    return graph[name].sale.includes('mango');
   }
-
+  
   while (searchQueue) {
     let person = searchQueue.shift();
     if (!searchQueue.includes(person)) {
       if (personIsSeller(person)) {
-        console.log(`${person} is a mango seller`);
+        console.log(`${ person } is a mango seller`);
         return true;
       } else {
         searchQueue.push(...graph[person].friends);
@@ -1577,7 +1583,7 @@ function search(graph, name) {
 function sequence(nums) {
   let current = 0;
   let best = 0;
-
+  
   for (let el of nums) {
     if (el > 0) {
       current++;
@@ -1591,14 +1597,15 @@ function sequence(nums) {
 //GENERATE ~~(())(())
 function generate(cur, open, closed, n) {
   if (cur.length === 2 * n) {
-    process.stdout.write(`${cur}\n`);
+    process.stdout.write(`${ cur }\n`);
     return;
   }
   if (open < n) {
-    generate(cur + "(", open + 1, closed, n);
+    generate(cur + '(', open + 1, closed, n);
   }
   if (closed < open) {
-    generate(cur + ")", open, closed + 1, n);
+    generate(cur + ')', open, closed + 1, n);
   }
 }
+
 //generate("", 0, 0, num)
