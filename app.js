@@ -1,38 +1,35 @@
-/*
-var fooArr = [];
+/*var fooArr = [];
 var barArr = [];
 var fooBarArr = [];
 
 const foobar = (x) => {
-	for (let a = 1; a <= x; a++) {
-		if (a % 2 == 0 && a % 5 == 0) {
-			fooBarArr.push(a);
-		} else if (a % 2 == 0) {
-			fooArr.push(a);
-		} else if (a % 5 == 0) {
-			barArr.push(a);
-		}
-	}
+  for (let a = 1; a <= x; a++) {
+    if (a % 2 == 0 && a % 5 == 0) {
+      fooBarArr.push(a);
+    } else if (a % 2 == 0) {
+      fooArr.push(a);
+    } else if (a % 5 == 0) {
+      barArr.push(a);
+    }
+  }
 };
 
 foobar(5);
 console.log('\n');
-console.log('>>>>>>>>foobar(47)<<<<<<<<<')
+console.log('>>>>>>>>foobar(47)<<<<<<<<<');
 console.log('\n');
 console.log(('Foo (by 2):\t' + fooArr.length + '=>\t' + fooArr).length);
 console.log('Bar (by 5):\t' + barArr.length + '=>\t' + barArr);
-console.log('FooBar (2 & 5):\t' + fooBarArr.length + '=>\t' + fooBarArr);
-*/
-/*
-var time = {
+console.log('FooBar (2 & 5):\t' + fooBarArr.length + '=>\t' + fooBarArr);*/
+/*var time = {
   year: 2345,
   month: 11,
   day: 10,
   hour: 11,
   minute: 12,
   second: 13,
-  microsecond: 123456
-}
+  microsecond: 123456,
+};
 
 console.log(time); // (*)
 time.microsecond++; // (**)
@@ -43,8 +40,7 @@ time.microsecond++;
 console.log(time);
 time.microsecond++;
 
-console.log( typeof(time[0]) );
-*/
+console.log(typeof (time[0]));*/
 /*
 var style = ["Джаз", "Блюз"];
 
@@ -83,40 +79,40 @@ anagram("finder", "Friend");
 anagram("hello", "bye");
 */
 /*const students = [{
-		name: "Nick",
-		grade: {
-			math: 10,
-			bio: 6,
-			physo: 8
-		}
-	},
-	{
-		name: "John",
-		grade: 15
-	},
-	{
-		name: "Julia",
-		grade: 19
-	},
-	{
-		name: "Nathalie",
-		grade: 9
-	},
+  name: 'Nick',
+  grade: {
+    math: 10,
+    bio: 6,
+    physo: 8,
+  },
+},
+  {
+    name: 'John',
+    grade: 15,
+  },
+  {
+    name: 'Julia',
+    grade: 19,
+  },
+  {
+    name: 'Nathalie',
+    grade: 9,
+  },
 ];
 
 const simpleArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const aboveTenSum = students
-	.map(student => student.grade) // сравниваем массив студентов с массивом их оценок
-	.filter(grade => grade >= 10) // отбираем оценки выше 10
-	.reduce((prev, next) => prev + next, 0); // суммируем каждую оценку выше 10
-    print(aboveTenSum)
+ .map(student => student.grade)
+ .filter(grade => grade >= 10)
+ .reduce((prev, next) => prev + next, 0);
+print(aboveTenSum);
 
 for (let i = 0; i < students.length; i++) {
-	console.table(students[i])
+  console.table(students[i]);
 }
 
-console.table(simpleArray)*/
+console.table(simpleArray);*/
 /*
 class Repo {
 	static getName() {
@@ -1432,180 +1428,136 @@ function table(n) {
   }
 }
 
-/******************************************
- *                                        *
- *              АЛГОРИТМЫ               *
- *                                        *
- ******************************************/
-//QUICK SORT
-function qsort(arr) {
-  if (arr.length < 2) {
-    return arr;
-  } else {
-    const pivotPosition = Math.floor(Math.random() * arr.length);
-    const pivot = arr[pivotPosition];
-    
-    let less = [];
-    let greater = [];
-    
-    for (let i = 0; i < arr.length; i++) {
-      const isPivot = i === pivotPosition;
-      if (arr[i] <= pivot && !isPivot) {
-        less.push(arr[i]);
-      } else if (arr[i] > pivot) {
-        greater.push(arr[i]);
-      }
-    }
-    return [...qsort(less), pivot, ...qsort(greater)];
-  }
-}
 
-//MERGE SORT
-function merge(arrays, sortFunc) {
-  let result = [];
-  let next;
-  // Add an 'index' property to each array to keep track of where we are in it.
-  arrays.forEach(array => (array.index = 0));
+//Numericals of a String
+function replace(str) {
+  let result = '';
   
-  // Find the next array to pull from.
-  // Just sort the list of arrays by their current value and take the first one.
-  function findNext() {
-    return arrays
-     .filter(array => array.index < array.length)
-     .sort((a, b) => sortFunc(a[a.index], b[b.index]))[0];
-  }
-  
-  // This is the heart of the algorithm.
-  while ((next = findNext())) result.push(next[next.index++]);
+  [...str].reduce((prev, curr) => {
+    prev[curr] = (prev[curr] || 0) + 1;
+    result += prev[curr];
+    return prev;
+  }, {});
   
   return result;
 }
 
-//GREATER COMMON DEVIDER(gcd)
-function gcd(a, b) {
-  return b ? gcd(b, a % b) : a;
+
+//Sums of Parts
+function partsSums(ls) {
+  ls.unshift(0);
+  let sum = ls.reduce((a, b) => a + b, 0);
+  return ls.map(el => sum -= el);
 }
 
-//FIBONACCI LOOP
-function fibonacci(num) {
-  let a = 1;
-  let b = 1;
+
+//MinMinMax
+function minMinMax(array) {
+  let sorted = array.sort((a, b) => a - b);
   
-  for (let i = 3; i <= num; i++) {
-    let c = a + b;
-    a = b;
-    b = c;
-  }
-  return b;
-}
-
-//FIBONACCI RECURSION
-function fibonacciRec(num) {
-  if (num < 3) return 1;
-  return fibonacciRec(num - 1) + fibonacciRec(num - 2);
-}
-
-//POWER
-function binpow(a, n) {
-  if (n == 0) return 1;
-  if (n % 2 == 1) return binpow(a, n - 1) * a;
-  else {
-    let b = binpow(a, n / 2);
-    return b * b;
+  let min = array[0];
+  let max = array[array.length - 1];
+  
+  for (let i = min; i < max; i++) {
+    if (!array.includes(i)) {
+      return [min, i, max];
+    }
   }
 }
 
-//FACTORIAL RECURSION
-function factorial(n) {
-  return n != 1 ? n * factorial(n - 1) : 1;
-}
-
-//SEARCH in GRAPH
-const graph = {
-  you: {
-    friends: ['alice', 'bob', 'claire'],
-    sale: [],
-  },
-  bob: {
-    friends: ['anuj', 'peggy'],
-    sale: [],
-  },
-  alice: {
-    friends: ['peggy'],
-    sale: [],
-  },
-  claire: {
-    friends: ['tom', 'johny'],
-    sale: [],
-  },
-  anuj: {
-    friends: [],
-    sale: [],
-  },
-  peggy: {
-    friends: [],
-    sale: ['car'],
-  },
-  tom: {
-    friends: ['peggy', 'you'],
-    sale: ['pen', 'moto', 'mango'],
-  },
-  johny: {
-    friends: [],
-    sale: ['mango'],
-  },
+/*let city = {
+	'AZ': 'Arizona',
+	'CA': 'California',
+	'ID': 'Idaho',
+	'IN': 'Indiana',
+	'MA': 'Massachusetts',
+	'OK': 'Oklahoma',
+	'PA': 'Pennsylvania',
+	'VA': 'Virginia',
 };
 
-function search(graph, name) {
-  let searchQueue = graph[name].friends;
-  let searched = [name];
-  
-  function personIsSeller(name) {
-    return graph[name].sale.includes('mango');
-  }
-  
-  while (searchQueue) {
-    let person = searchQueue.shift();
-    if (!searchQueue.includes(person)) {
-      if (personIsSeller(person)) {
-        console.log(`${ person } is a mango seller`);
-        return true;
-      } else {
-        searchQueue.push(...graph[person].friends);
-        searched.push(person);
-      }
-    }
-  }
-  return false;
+
+let test = `John Daggett, 341 King Road, Plymouth MA
+Alice Ford, 22 East Broadway, Richmond VA
+Sal Carpenter, 73 6th Street, Boston MA`;
+
+let arr = test.split('\n').map(el => el.replace(/,/gm, ''));
+
+let divider = {};
+
+for (let [key, value] of Object.entries(city)) {
+	divider[value] = arr
+		.filter(el => el.includes(key.toString()))
+		.map(el => el.replace(new RegExp(key, 'gm'), value));
 }
 
-//FIND LONGER SEQUENCE(последовательность) 1 [1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 1, 1];
-function sequence(nums) {
-  let current = 0;
-  let best = 0;
+for (let [key, value] of Object.entries(divider)) {
+	if (value.length) {
+		work.push(`${ key }\n..... ${ value.join('\n..... ') }`);
+		//console.log(` ${ key }\n..... ${ value.join('\n..... ') }`);
+	}
+}*/
+
+
+//Smallest possible sum
+function solution(numbers) {
   
-  for (let el of nums) {
-    if (el > 0) {
-      current++;
-      best = Math.max(current, best);
-    } else {
-      current = 0;
-    }
+  return numbers.reduce(gcd) * numbers.length;
+  
+  function gcd(a, b) {
+    return b ? gcd(b, a % b) : a;
   }
+  
+  /*let sorted = numbers.sort((a, b) => a - b);
+  let max = sorted[numbers.length - 1];
+  let min = sorted[0];*/
+  
+  /*return (() => {
+   while (min) {
+    let t = min;
+    min = max % min;
+    max = t;
+   }
+   return max;
+  })() * numbers.length;*/
+  
+  /*if (max === min) {
+   return numbers[0] * numbers.length;
+  } else {
+   let changed = max - min;
+
+   sorted.pop();
+   sorted.push(changed);
+
+   return solution(sorted);
+  }*/
 }
 
-//GENERATE ~~(())(())
-function generate(cur, open, closed, n) {
-  if (cur.length === 2 * n) {
-    process.stdout.write(`${ cur }\n`);
-    return;
-  }
-  if (open < n) {
-    generate(cur + '(', open + 1, closed, n);
-  }
-  if (closed < open) {
-    generate(cur + ')', open, closed + 1, n);
-  }
+
+//Longest Palindrome
+function longestPalindrome(str) {
+  if (str.length === 1) return 1;
+  let modStr = str.toLowerCase().replace(/[^A-Za-z0-9]+/gm, '');
+  let unique = [...new Set(modStr)];
+  return unique.length % 2 === 0 ? unique.length * 2 - 1 : unique.length * 2;
 }
 
-//generate("", 0, 0, num)
+
+//Consecutive Ducks
+function consecutiveDucks(num) {
+  return Math.log2(num) % 1 !== 0;
+  
+  /*if (num === 1) return false;
+  return num % 2 !== 0 ? true : consecutiveDucks(num / 2);*/
+}
+
+
+//Geometric Progression Sequence
+function geometricSequenceElements(a, r, n) {
+  let arr = [a];
+  for (let i = 0; i < n - 1; i++) {
+    arr.push(arr[i] * r);
+  }
+  return arr.join`, `;
+}
+
