@@ -1,9 +1,24 @@
 {
-  "name": "ForTests",
+  "name": "fortests",
   "version": "1.0.0",
   "dependencies": {
     "bluebird": "^3.5.4",
     "connect": "^3.6.6",
     "node-fetch": "^2.3.0"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "main": "testAsync.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StiflerPasha/ForTests.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StiflerPasha/ForTests/issues"
+  },
+  "homepage": "https://github.com/StiflerPasha/ForTests#readme",
+  "description": ""
 }
